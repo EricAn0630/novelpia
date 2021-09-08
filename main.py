@@ -3,24 +3,51 @@ from bs4 import BeautifulSoup
 from errors import NonExistNovel
 
 
-class Novelpia:
 
-    def search_novel_as_date(self, title: str):
+def search_novel(keyword: str):
 
-        res = requests.get(f'https://novelpia.com/search/keyword/date/1/{title}')
-        html = res.text
-        soup = BeautifulSoup(html, 'html.parser')
-        asd = soup.find_all('div', {"class": "col-md-12 novelbox mobile_hidden"})
+    res = requests.get(f'https://novelpia.com/search/keyword/date/1/{keyword}')
+    html = res.text
+    soup = BeautifulSoup(html, 'html.parser')
+    div = soup.find_all('div', {"class": "col-md-12 novelbox mobile_hidden"})
+    tags_list = []
 
-        if asd == []:
-            raise NonExistNovel
+    if div == []:
+        raise NonExistNovel
 
-        for i in range(len(asd)):
-            main = str(asd[i])
-            novel = BeautifulSoup(main, 'html.parser')
-            title = novel.find('b', {"style": "font-size:20px;letter-spacing: -2px;cursor:pointer;"})
-            author = novel.find('b', {"style": "cursor:pointer;font-weight:500;"})
-            print(f"{title.text} - {author.text}")
+    # for i in range(len(div)):
+    #     nv = str(div[i])
+    #     novel = BeautifulSoup(nv, 'html.parser')
+    #     title = novel.find('b', {"style": "font-size:20px;letter-spacing: -2px;cursor:pointer;"})
+    #     author = novel.find('b', {"style": "cursor:pointer;font-weight:500;"})
+    #     description = novel.find('font', {"style": "font-size:14px;color:#666;font-weight:400;"})
+    #     print()
+    nv = str(div[0])
+    novel = BeautifulSoup(nv, 'html.parser')
+
+    title = novel.find('b', {"style": "font-size:20px;letter-spacing: -2px;cursor:pointer;"})
+    author = novel.find('b', {"style": "cursor:pointer;font-weight:500;"})
+    description = novel.find_all('font', {"style": "font-size:14px;color:#666;font-weight:400;"})[1]
+    is_free = novel.find('span', {"class": "b_free s_inv"})
+    if is_free == None:
+        is_free = 'PLUS'
+    else:
+        is_free = '자유'
+    tags = novel.find_all('span', {'style': 'color:#5032df;border: 2px solid #5032df; border-radius: 20px; padding: 3px 10px; line-height: 20px; user-select: none;cursor:pointer;'})
+    count = novel.find('span', {"style": "font-size:14px;font-weight:600;color:#333;"}).text
 
 
 
+    for i in range(len(tags)):
+        tags_list.append(tags[i].text)
+
+    view, f = count.split('명')
+    book, s = f.split('회차')
+    good = s.split('회')[0]
+
+    view = ''.join(view.split())
+    book = ''.join(book.split())
+    good = ''.join(good.split())
+    print(tags_list)
+
+search_novel("")
