@@ -6,7 +6,7 @@ from errors import NonExistNovel
 
 def search_novel(keyword: str):
     '''
-    소설 데이터를 JSON 값으로 리턴합니다.\n
+    소설 데이터를 dict로 리턴합니다.\n
     검색한 소설이 존재하지 않을 시 NonExistNovel 에러를 일으킵니다.\n\n
     '''
 
