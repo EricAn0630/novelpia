@@ -5,6 +5,10 @@ from errors import NonExistNovel
 
 
 def search_novel(keyword: str):
+    '''
+    소설 데이터를 JSON 값으로 리턴합니다.\n
+    검색한 소설이 존재하지 않을 시 NonExistNovel 에러를 일으킵니다.\n\n
+    '''
 
     res = requests.get(f'https://novelpia.com/search/keyword/date/1/{keyword}')
     html = res.text
@@ -25,14 +29,14 @@ def search_novel(keyword: str):
     nv = str(div[0])
     novel = BeautifulSoup(nv, 'html.parser')
 
-    title = novel.find('b', {"style": "font-size:20px;letter-spacing: -2px;cursor:pointer;"})
-    author = novel.find('b', {"style": "cursor:pointer;font-weight:500;"})
-    description = novel.find_all('font', {"style": "font-size:14px;color:#666;font-weight:400;"})[1]
+    title = novel.find('b', {"style": "font-size:20px;letter-spacing: -2px;cursor:pointer;"}).text
+    author = novel.find('b', {"style": "cursor:pointer;font-weight:500;"}).text
+    description = novel.find_all('font', {"style": "font-size:14px;color:#666;font-weight:400;"})[1].text
     is_free = novel.find('span', {"class": "b_free s_inv"})
     if is_free == None:
-        is_free = 'PLUS'
+        is_free = False
     else:
-        is_free = '자유'
+        is_free = True
     tags = novel.find_all('span', {'style': 'color:#5032df;border: 2px solid #5032df; border-radius: 20px; padding: 3px 10px; line-height: 20px; user-select: none;cursor:pointer;'})
     count = novel.find('span', {"style": "font-size:14px;font-weight:600;color:#333;"}).text
 
@@ -48,6 +52,17 @@ def search_novel(keyword: str):
     view = ''.join(view.split())
     book = ''.join(book.split())
     good = ''.join(good.split())
-    print(tags_list)
+    return {
+        "title": title,
+        "author": author,
+        "description": description,
+        "is_free": is_free,
+        "count": {
+            "view": view,
+            "book": book,
+            "good": good
+        },
+        "tags": tags_list
+    }
 
-search_novel("")
+print(search_novel("메인히로인"))
