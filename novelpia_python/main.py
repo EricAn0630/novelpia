@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from errors import NonExistNovel
+from novelpia_python.errors import NonExistNovel
 
 class Novelpia:
 
