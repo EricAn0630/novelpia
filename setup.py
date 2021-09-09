@@ -11,6 +11,7 @@ def file(path: str) -> str:
 setup(
     name="novelpia_python",
     version=VERSION,
+    download_url=f"https://github.com/EricAn0630/novelpia-python/archive/{VERSION}.tar.gz",
     packages=find_packages(),
     author="Eric_An0630",
     author_email="soochan06@naver.com",
