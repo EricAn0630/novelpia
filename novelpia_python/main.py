@@ -7,7 +7,7 @@ from errors import NonExistNovel
 def search_novel(keyword: str):
     '''
     소설 데이터를 dict로 리턴합니다.\n
-    검색한 소설이 존재하지 않을 시 NonExistNovel 에러를 일으킵니다.\n\n
+    검색한 소설이 존재하지 않을 시 NonExistNovel 에러를 일으킵니다.
     '''
 
     res = requests.get(f'https://novelpia.com/search/keyword/date/1/{keyword}')
@@ -19,13 +19,13 @@ def search_novel(keyword: str):
     if div == []:
         raise NonExistNovel
 
+    #1페이지의 모든 소설 이름이랑 저자를 가져오는건데 지우기엔 아깝고 모든 소설 반환은 아직 안만들어서 남겨둔 코드
     # for i in range(len(div)):
     #     nv = str(div[i])
     #     novel = BeautifulSoup(nv, 'html.parser')
     #     title = novel.find('b', {"style": "font-size:20px;letter-spacing: -2px;cursor:pointer;"})
     #     author = novel.find('b', {"style": "cursor:pointer;font-weight:500;"})
     #     description = novel.find('font', {"style": "font-size:14px;color:#666;font-weight:400;"})
-    #     print()
     nv = str(div[0])
     novel = BeautifulSoup(nv, 'html.parser')
 
@@ -64,5 +64,3 @@ def search_novel(keyword: str):
         },
         "tags": tags_list
     }
-
-print(search_novel("메인히로인"))
