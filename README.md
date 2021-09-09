@@ -8,9 +8,11 @@
 사용 예
 ------
 ```py
-from novelpia_python import search_novel
+from novelpia_python import Novelpia
 
-search_novel("노벨쨩의 기묘한 일상!")
+novel = Novelpia()
+
+print(novel.search_novel("노벨쨩의 기묘한 일상!"))
 ```
 
 * ### 리턴
