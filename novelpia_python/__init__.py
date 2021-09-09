@@ -1,3 +1,3 @@
-__all__ = ['search_novel']
+__all__ = ['main', 'errors']
 
 __version__ = "0.0.1.a"
