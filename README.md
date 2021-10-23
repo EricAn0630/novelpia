@@ -31,3 +31,8 @@ print(novel.search_novel("노벨쨩의 기묘한 일상!"))
 docs는 업습니다...
 
 
+--- 10/23 추가 ---
+
+search_list를 추가하였읍니다.
+간단하게 설명하면 search_novel과 비슷하지만 한 페이지 전체를 긁어오는 것입니다.
+
