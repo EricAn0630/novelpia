@@ -17,16 +17,17 @@ print(novel.search_novel("노벨쨩의 기묘한 일상!"))
 
 * ### 리턴
   ```
-  {'novel_no': '19876', 
-  'novel_name': '노벨쨩의 기묘한 일상!', 
-  'novel_age': '0', 
-  'novel_thumb': '/imagebox/cover/f0f4d53e8682b6fcaf99c69d2a375db8_108865_ori.file', 
-  'mem_nick': '하와와노벨쨩', 
-  'is_secondary_creation': '1', 
-  'count_view': '171782', 
-  'count_good': '19520', 
-  'count_book': '19', 
-  'content_viewdate': '2022-02-16 11:05:41'
+  {
+    'novel_no': '19876', 
+    'novel_name': '노벨쨩의 기묘한 일상!', 
+    'novel_age': '0', 
+    'novel_thumb': '/imagebox/cover/f0f4d53e8682b6fcaf99c69d2a375db8_108865_ori.file', 
+    'mem_nick': '하와와노벨쨩', 
+    'is_secondary_creation': '1', 
+    'count_view': '171782', 
+    'count_good': '19520', 
+    'count_book': '19', 
+    'content_viewdate': '2022-02-16 11:05:41'
   }
   ```  
 
