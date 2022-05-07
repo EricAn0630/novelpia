@@ -8,7 +8,7 @@
 사용 예
 ------
 ```py
-from novelpia_python import Novelpia
+from novelpia import Novelpia
 
 novel = Novelpia()
 
@@ -27,22 +27,26 @@ print(novel.search_novel("노벨쨩의 기묘한 일상!"))
       'thumbnail': 'https://image.novelpia.com/imagebox/cover/f0f4d53e8682b6fcaf99c69d2a375db8_108865_ori.thumb'
   }
   ```  
-   
-아직 search_novel 밖에 만들지 못했읍니다.   
-docs는 업습니다...
 
+현재 search_novel, search_novels만 사용 가능합니다.
 
---- 10/23 추가 ---
+--- 10 / 23 추가 ---
 
 search_list를 추가하였읍니다.
 간단하게 설명하면 search_novel과 비슷하지만 한 페이지 전체를 긁어오는 것입니다.
 
 
---- 11/9 추가 ---
+--- 11 / 9 추가 ---
 
 리턴값에 표지 링크를 추가했읍니다.
 다만 '표지 준비중' 표지를 제외한 다른 표지 링크는 모두 다운로드 링크이니 이 점 유의해주세요.
 또한 PEP8에 최대한 맞춰(...) 보려고 코드의 한 줄의 최대 길이를 79자 이하로 바꿨읍니다.
 
+--- 2022 / 5 / 8 추가 ---
+
+대대적으로 리워크 했습니다. 이제 BeautifulSoup를 이용한 크롤링 방식이 아닌 노벨피아의 api를 이용하여 데이터를 가져오게 되었습니다.
+이 모든 것은 시험이 끝났다고 심심해 했던 제가 노벨피아를 해체해 보던 도중 발견한 코드에 의해 급작스레 진행되었습니다. 솔직히 진짜로 찾을 줄 몰랐어요.
+조만간 출석체크 기능이 생길 수 있습니다.
+Docs는 헌재 구상중입니다.
 
 
