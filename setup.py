@@ -1,7 +1,7 @@
 from setuptools import  setup, find_packages
-import novelpia_python
+import pypia
 
-VERSION = novelpia_python.__version__
+VERSION = pypia.__version__
 
 with open("README.md", "r", encoding="utf-8") as f:
     README = f.read()
@@ -11,7 +11,7 @@ with open("requirements.txt", "r", encoding="utf-8") as f:
 
 
 setup(
-    name="novelpia_python",
+    name="pypia",
     version=VERSION,
     download_url=f"https://github.com/EricAn0630/novelpia-python/archive/{VERSION}.tar.gz",
     packages=find_packages(),
