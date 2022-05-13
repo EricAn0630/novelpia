@@ -70,7 +70,8 @@ class Novelpia:
     def search_novels(self, keyword: Iterable[str], amount: Iterable[int]) -> List[dict]:
         '''
         keyword와 연관된 소설들의 데이터를 amount의 수량만큼 List로 리턴합니다.\n
-        List의 순서는 조회순입니다.
+        List의 순서는 조회순입니다.\n
+        검색한 소설이 존재하지 않을 시 NonExistNovel 에러를 일으킵니다.\n
         '''
         novels = []
 
